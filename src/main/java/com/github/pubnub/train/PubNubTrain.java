@@ -10,7 +10,7 @@ import java.util.Collections;
 
 public final class PubNubTrain {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(PubNubTrain.class);
-    private static final String CHANNEL_NAME = "train-demo";
+    private static final String DEFAULT_CHANNEL_NAME = "train-demo";
 
     /**
      * Subscribes to a PubNub channel and listens for train location information
@@ -21,8 +21,9 @@ public final class PubNubTrain {
         LOGGER.info("Starting PubNub Train Demo ...");
 
         final Configuration config = new EnvironmentConfiguration();
-        final String pubnubSubscribeKey = config.getString("PUBNUB_SUBSCRIBE_KEY");
-        final String pubnubPublishKey = config.getString("PUBNUB_PUBLISH_KEY");
+        final String pubnubSubscribeKey = config.getString("PUBNUB-SUBSCRIBE-KEY");
+        final String pubnubPublishKey = config.getString("PUBNUB-PUBLISH-KEY");
+        final String pubnubChannel = config.getString("PUBNUB-CHANNEL-NAME", DEFAULT_CHANNEL_NAME);
 
         //Configure PubNub
         final PNConfiguration pnConfiguration = new PNConfiguration();
@@ -33,8 +34,8 @@ public final class PubNubTrain {
 
         //Create PubNub listener and subscribe
         pubnub.addListener(new TrainSubscriber());
-        pubnub.subscribe().channels(Collections.singletonList(CHANNEL_NAME)).execute();
+        pubnub.subscribe().channels(Collections.singletonList(pubnubChannel)).execute();
 
-        LOGGER.info("Subscribed to {}", CHANNEL_NAME);
+        LOGGER.info("Subscribed to {}", pubnubChannel);
     }
 }
