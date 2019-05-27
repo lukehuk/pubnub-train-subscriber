@@ -3,7 +3,7 @@ This is the subscriber component of a simple PubNub demonstration project inspir
 
 To see the publisher component of this project visit [this project](https://github.com/lukehuk/pubnub-train-publisher).
 
-To read more about the background and motivation of this project visit [this article](https://medium.com/p/c90ea36fffce)
+To read more about the background and motivation of this project visit [this article](https://medium.com/@luke.heavens/the-pubnub-train-c90ea36fffce)
 
 ## Getting Started
 ### Prerequisites
