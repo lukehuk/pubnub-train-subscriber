@@ -44,7 +44,7 @@ public class TrainSubscriber extends SubscribeCallback {
         final PNMessageResult message
     ) {
         // When a message is received, try and parse it into the SubscriberMessage POJO
-        // If the message is valid, record the even using the TrainDataCollector instance
+        // If the message is valid, record the event using the TrainDataCollector instance
         try {
             final SubscriberMessage subscriberMessage = new Gson().fromJson(message.getMessage(), SubscriberMessage.class);
             trainDataCollector.recordInteraction(new InteractionData(

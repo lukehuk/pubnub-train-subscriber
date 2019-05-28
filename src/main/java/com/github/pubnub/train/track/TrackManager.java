@@ -9,6 +9,7 @@ import java.util.Map;
 public class TrackManager {
     public static final String DISTANCE_UNIT = "cm";
     //A static track representation which could be made dynamic in the future
+    //A map of detector ID to junction information
     private static final Map<String, TrackJunction> trackStructure = new HashMap<String, TrackJunction>() {{
         put("7", new TrackJunction("A", "D", 26));
         put("8", new TrackJunction("B", "A", 27.5));
@@ -21,7 +22,7 @@ public class TrackManager {
      *
      * @param detectorId - A given track junction detector
      * @return A section identifier
-     * @throws TrainLocationException Thrown if an unknown detector is provided
+     * @throws TrainLocationException - Thrown if an unknown detector is provided
      */
     public String getNextSection(final String detectorId) throws TrainLocationException {
         if (trackStructure.containsKey(detectorId)) {
@@ -36,7 +37,7 @@ public class TrackManager {
      *
      * @param detectorId - A given track junction detector
      * @return A section identifier
-     * @throws TrainLocationException Thrown if an unknown detector is provided
+     * @throws TrainLocationException - Thrown if an unknown detector is provided
      */
     public String getPreviousSection(final String detectorId) throws TrainLocationException {
         if (trackStructure.containsKey(detectorId)) {
